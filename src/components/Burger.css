@@ -1,0 +1,119 @@
+.Burger{
+    display: inline-block;  
+    position: relative;
+}
+.Burger-top{
+    width: 300px;
+    height: 50px;
+    background-color: #FCB54D;
+    margin: 6px 0;
+    border-radius: 30px 30px 0px 0px;
+    display: block;
+
+}
+.Burger-bottom{
+    width: 300px;
+    height: 30px;
+    background-color: orange;
+    margin: 6px 0;
+    display: block;
+}
+
+.Salad{
+    width: 300px;
+    height: 30px;
+    background-color: lightgreen;
+    margin: 6px 0;
+    display: block;
+ }
+ .Meat{
+    width: 300px;
+    height: 30px;
+    background-color: brown;
+    margin: 6px 0;
+    display: block;
+  }
+  .Burger-control-container{
+      background-color: burlywood;
+      width: 100%;
+      height:300px;
+  }
+  .Chease{
+    width: 300px;
+    height: 30px;
+    background-color: lightgoldenrodyellow;
+    margin: 6px 0;
+    display: block;
+      
+  }
+  .More{
+      background-color: orange;
+      color: white;
+      border: 0px;
+      margin: 10px;
+      font-size: 14px;
+      padding: 5px 10px;
+      cursor: pointer;
+      text-transform: uppercase;
+  }
+  .Less{
+    background-color: red;
+    color: white;
+    border: 0px;
+    margin: 10px 20px;
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.Disable{
+    background-color: gray;
+    color: white;
+    border: 0px;
+    margin: 10px 20px;
+    font-size: 14px;
+    padding: 5px 10px;
+    cursor: not-allowed;
+    text-transform: uppercase;
+
+}
+.seeds i, .seeds i:before, .seeds i:after {
+    width: 10px;
+    height: 5px;
+    margin: 4px;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    z-index: 1;
+    background-color: #fdf1cb;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#fdf1cb));
+    background-image: -webkit-linear-gradient(top, #fff, #fdf1cb);
+    background-image: -moz-linear-gradient(top, #fff, #fdf1cb);
+    background-image: linear-gradient(to bottom, #fff, #fdf1cb);
+    border-radius: 2px;
+    box-shadow: 2px 3px 0 rgba(0,0,0,0.1);
+  }
+  
+  .seeds i:before, .seeds i:after {
+    content: '';
+    top: 10px;
+  }
+  
+  .seeds i:after {
+    top: -10px;
+  }
+  
+  .seeds i:nth-child(2) {
+    left: 100px;
+  }
+  
+  .seeds i:nth-child(3) {
+    left: 165px;
+  }
+  
+  .seeds i:nth-child(4) {
+    left: 225px;
+  }
+  .seeds i:nth-child(5) {
+    right   : 255px;
+  }
