@@ -5,7 +5,7 @@ import Burger from './components/Burger'
 import BurgerControls from './components/BurgerControls'
 const INGRADIENT_PRICE = {
   salad:0.5,
-  chease:1,
+  cheese:1,
   meat:2
 }
 class App extends Component{
@@ -13,7 +13,7 @@ class App extends Component{
     ingreadents : {
       salad: 0,
       meat: 0,
-      chease: 0
+      cheese: 0
       
     },
     totaPrice:4

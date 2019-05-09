@@ -13,8 +13,8 @@ const BurgerIngradients = (props) => {
      case ('meat') :
         ingradient = <div className="Meat"></div>
         break;
-     case ('chease') :  
-        ingradient = <div className="Chease"></div>
+     case ('cheese') :  
+        ingradient = <div className="Cheese"></div>
         break; 
      case ('salad') :  
         ingradient = <div className="Salad"></div>
