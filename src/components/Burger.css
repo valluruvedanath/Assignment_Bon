@@ -21,14 +21,15 @@
 
 .Salad{
     width: 300px;
-    height: 30px;
+    height: 20px;
     background-color: lightgreen;
     margin: 6px 0;
+    border-radius: 15px;
     display: block;
  }
  .Meat{
     width: 300px;
-    height: 30px;
+    height: 15px;
     background-color: brown;
     margin: 6px 0;
     display: block;
@@ -40,9 +41,10 @@
   }
   .Cheese{
     width: 300px;
-    height: 30px;
-    background-color: lightgoldenrodyellow;
+    height: 25px;
+    background-color: yellow;
     margin: 6px 0;
+    border-radius: 15px;
     display: block;
       
   }
@@ -54,17 +56,17 @@
       font-size: 14px;
       padding: 5px 10px;
       cursor: pointer;
-      text-transform: uppercase;
+      display: inline-block;
   }
   .Less{
     background-color: red;
     color: white;
     border: 0px;
-    margin: 10px 20px;
+    margin: 10px 10px;
     font-size: 14px;
     padding: 5px 10px;
+    display: inline-block;
     cursor: pointer;
-    text-transform: uppercase;
 }
 .Disable{
     background-color: gray;
@@ -73,8 +75,8 @@
     margin: 10px 10px;
     font-size: 14px;
     padding: 5px 10px;
-    cursor: not-allowed;
-    text-transform: uppercase;
+    cursor: not-allowed !important;
+    display: inline-block;
 
 }
 .seeds i, .seeds i:before, .seeds i:after {
@@ -117,3 +119,18 @@
   .seeds i:nth-child(5) {
     right   : 255px;
   }
+  .row{
+    margin: 0;
+  }
+  .Checkout-btn{
+    background-color: orange;
+    color: white;
+    border: 0px;
+    padding: 10px
+  }    
+  .Checkout-btn:hover{
+    background-color: green;
+    color: white;
+    border: 0px;
+    padding: 10px
+  }   

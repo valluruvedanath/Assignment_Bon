@@ -9,21 +9,35 @@ const burgerControls = (props) =>{
     console.log(props.disabled);
     var style = {
         display:'inline-block',
-        margin:'10px'
+        margin:'20px'
     }
-
+    console.log("Oeder Now "+ props.purchaseble)
    return(
 
        <div className='Burger-control-container'>
            <p>Cost of Burger : {props.price}</p>
        {controls.map(ctrl =>(
-             <div key={ctrl.lable}>
-             <div style={style}>{ctrl.lable}</div>
-             <button className={props.disabled[ctrl.type] ? "Disable": "Less"} onClick={()=>props.remove(ctrl.type)} disabled={props.disabled[ctrl.type]}>less</button>
-             <button className="More" onClick={()=>props.add(ctrl.type)}>more</button>
+             <div className="row" key={ctrl.lable}>
+                <div className="col-sm-3"></div>
+                <div className="col-sm-2 text-right"style={style}><strong>{ctrl.lable}</strong></div>
+                <div className="col-sm-2 text-right">
+                    <button className={props.disabled[ctrl.type] ? "Disable": "Less"} onClick={()=>props.remove(ctrl.type)} disabled={props.disabled[ctrl.type]}>Remove</button>
+                </div>
+                <div className="col-sm-2 text-left">
+                    <button className="More" onClick={()=>props.add(ctrl.type)}>Add</button>
+                </div>
+                <div className="col-sm-3"></div>
+
              </div>
+
              
            ))}
+            <div className="row">
+                       <button onClick = {() => props.purchasing()}
+                        className={props.purchaseble ? "Checkout-btn" : "Disable"}
+                        disabled={!props.purchaseble}>Order Now</button>
+
+             </div>
        </div>
    )
 }
