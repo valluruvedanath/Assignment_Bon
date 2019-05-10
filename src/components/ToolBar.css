@@ -25,8 +25,10 @@
 .ToolBar nav ul li{
 
     list-style: none;
-    float: right;
-padding: 15px
+    padding: 15px;
+    background-color: maroon;
+    display: inline-block;
+    
 }
 .ToolBar nav ul li a {
     color: white;
@@ -40,4 +42,64 @@ padding: 15px
 }
 ul {
     margin: 0;
+}
+.LeftsideBar{
+    display: none;
+}
+.Close{
+    display: none;  
+}
+.HumburgerMenu{
+    display: none
+}
+
+@media (max-width:500px){
+    .ToolBar{
+        display: none
+    }
+    .LeftsideBar ul li{
+        list-style: none;
+        padding: 10px;
+        font-size: 18px
+
+    }
+    .LeftsideBar ul li a{
+        color: white;
+        text-decoration: none
+        
+        
+    }
+    .LeftsideBar img{
+        width: 100px;
+        text-align: center;
+        padding: 5px;
+        margin: 10px
+        
+    }
+    .LeftsideBar{
+        top:0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        transform: translateY(0);
+        background-color: chocolate;
+        box-sizing: border-box;
+        position: absolute;
+        display: block;
+        animation: fadein 25s;
+        z-index: 899;
+
+    
+    }
+    .Close {
+        transform: translateY(-100vh);
+        transition: all .20s ease-in-out;
+        display: none;
+        cursor: pointer
+    
+    }
+    .HumburgerMenu{
+        display: block;
+        font-size: 18px
+    }
 }
