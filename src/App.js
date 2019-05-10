@@ -3,7 +3,8 @@ import './App.css';
 import Aux from './hoc/Aux';
 import Burger from './components/Burger'
 import BurgerControls from './components/BurgerControls'
-import Model from './components/Model'
+import Model from './components/Model';
+import ToolBar from './components/ToolBar'
 const INGRADIENT_PRICE = {
   salad:0.5,
   cheese:1,
@@ -76,6 +77,7 @@ class App extends Component{
     }
   return (
     <Aux>
+      <ToolBar />
       <div className="text-center">
       <Model data={this.state.ingreadents} 
              show={this.state.purchasing} 

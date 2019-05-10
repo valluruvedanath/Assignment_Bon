@@ -17,16 +17,16 @@ const burgerControls = (props) =>{
        <div className='Burger-control-container'>
            <p>Cost of Burger : {props.price}</p>
        {controls.map(ctrl =>(
-             <div className="row" key={ctrl.lable}>
-                <div className="col-sm-3"></div>
-                <div className="col-sm-2 text-right"style={style}><strong>{ctrl.lable}</strong></div>
-                <div className="col-sm-2 text-right">
+             <div className="row col-xs-12" key={ctrl.lable}>
+                <div className="col-sm-3 col-xs-1"></div>
+                <div className="col-sm-2 col-xs-3 text-right"style={style}><strong>{ctrl.lable}</strong></div>
+                <div className="col-sm-2 col-xs-3 text-right">
                     <button className={props.disabled[ctrl.type] ? "Disable": "Less"} onClick={()=>props.remove(ctrl.type)} disabled={props.disabled[ctrl.type]}>Remove</button>
                 </div>
-                <div className="col-sm-2 text-left">
+                <div className="col-sm-2 col-xs-3 text-left">
                     <button className="More" onClick={()=>props.add(ctrl.type)}>Add</button>
                 </div>
-                <div className="col-sm-3"></div>
+                <div className="col-sm-3 col-xs-1"></div>
 
              </div>
 
