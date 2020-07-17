@@ -5,6 +5,8 @@ import Burger from './components/Burger'
 import BurgerControls from './components/BurgerControls'
 import Model from './components/Model';
 import ToolBar from './components/ToolBar'
+import axios from 'axios';
+
 const INGRADIENT_PRICE = {
   salad:0.5,
   cheese:1,
@@ -12,16 +14,17 @@ const INGRADIENT_PRICE = {
 }
 class App extends Component{
   state = {
-    ingreadents : {
-      salad: 0,
-      meat: 0,
-      cheese: 0
-      
-    },
+    ingreadents : null,
     totaPrice:4,
     purchaseble: false,
     purchasing: false
   }
+  componentDidMount(){
+    axios.get("https://burger-bulider-58f60.firebaseio.com/ingridents.json")
+    .then(response =>{
+      this.setState({ingreadents:response.data});
+    })
+   }
    UpdatePurchasableState = (ingreadents) => {
      const latestIngradients = ingreadents
      const sum = Object.keys(latestIngradients)
@@ -75,24 +78,28 @@ class App extends Component{
     for(let key in disabledInfo){
       disabledInfo[key] = disabledInfo[key] <= 0
     }
+    let burger_builder = null
+    if (this.state.ingreadents){
+       burger_builder =      <div className="text-center">
+       <Model data={this.state.ingreadents} 
+              show={this.state.purchasing} 
+              close={this.purchasingHandlercancel}
+              price = {this.state.totaPrice}/>
+      <Burger ingreadents={this.state.ingreadents}/>
+      <BurgerControls
+       add = {this.addIngradient}
+       remove = {this.removeIngradient} 
+       price={this.state.totaPrice}
+       disabled = {disabledInfo}
+       purchaseble = {this.state.purchaseble}
+       purchasing = {this.purchasingHandler}
+       />
+      </div>
+    }
   return (
     <Aux>
       <ToolBar />
-      <div className="text-center">
-      <Model data={this.state.ingreadents} 
-             show={this.state.purchasing} 
-             close={this.purchasingHandlercancel}
-             price = {this.state.totaPrice}/>
-     <Burger ingreadents={this.state.ingreadents}/>
-     <BurgerControls
-      add = {this.addIngradient}
-      remove = {this.removeIngradient} 
-      price={this.state.totaPrice}
-      disabled = {disabledInfo}
-      purchaseble = {this.state.purchaseble}
-      purchasing = {this.purchasingHandler}
-      />
-     </div>
+      {burger_builder}
     </Aux>)
                   }
 
