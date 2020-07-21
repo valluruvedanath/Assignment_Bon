@@ -1,0 +1,27 @@
+ul li{
+        list-style: none
+}
+.OrderContainer{
+    display: inline-block;
+    padding: 20px
+
+}
+.order-item{
+ background-color: lightblue;
+border-radius: 4px;
+padding: 10px;
+ display: inline-block;
+ box-shadow: indigo 0px 1px 2px 0px;
+ cursor: pointer;
+ margin: 2px
+
+}
+.order-item:hover{
+    background-color: lightcoral;
+   border-radius: 4px;
+   padding: 10px;
+    display: inline-block;
+    color: white;
+    box-shadow: indigo 0px 1px 2px 0px
+   
+   }

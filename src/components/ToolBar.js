@@ -1,6 +1,10 @@
 import React,{Component} from 'react'
 import './ToolBar.css' 
-import Logo from './assets/log.png'
+import Logo from './assets/log.png';
+import {
+       Link
+  } from "react-router-dom";
+    
 class ToolBar extends Component{
      state = {
         popupshow:false
@@ -17,9 +21,9 @@ class ToolBar extends Component{
        <div className="ToolBar">
          <img src={Logo} alt="Burger-Logo"/>
          <nav> 
-             <ul>
-           <li><a href='/'>Home</a></li>
-           <li><a href='/'>Ingradients</a>  </li>
+              <ul>
+           <li><Link to="/">Home</Link></li>
+           <li><Link to="/orders">Orders</Link>  </li>
            <li style={{float: 'right'}}><a href='/'>Burger Builder</a></li>
            <li style={{float: 'right'}}><a href='/'>Check Out</a>  </li>
            </ul>
@@ -36,11 +40,15 @@ class ToolBar extends Component{
            <li><a href='/'>Ingradients</a>  </li>
            <li><a href='/'>Burger Builder</a></li>
            <li ><a href='/'>Check Out</a>  </li>
-           <li  onClick={()=>this.closepopup()}><a style={{cursor:'pointer'}}>X</a></li>
+           <li  onClick={()=>this.closepopup()}><i style={{cursor:'pointer'}}>X</i></li>
           </ul>                  
          </div>
        </div>
-   )}
+
+   )
+
+}
+
 }
 
 export default ToolBar
