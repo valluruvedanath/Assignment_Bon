@@ -6,7 +6,10 @@ class Orders extends Component {
         orders: []
     }
     componentDidMount(){
-        axios.get('https://burger-bulider-58f60.firebaseio.com/orders.json')
+        let userId = localStorage.getItem('UserId')
+        let auth = localStorage.getItem('accessToken')
+        let queryParam = '?auth='+auth+'&orderBy="userId"&equalTo="'+userId+'"'
+        axios.get('https://burger-bulider-58f60.firebaseio.com/orders.json'+queryParam)
         .then(rep =>{
             console.log("loaded orders.");
             this.setState({orders: rep.data})
@@ -16,7 +19,7 @@ class Orders extends Component {
     render(){
          let orders_data = []
          for(let key in this.state.orders){
-            orders_data.push(<Order key={key} data={this.state.orders[key].orderData} />)
+            orders_data.push(<Order key={key} id={key} data={this.state.orders[key]} />)
          }
         return <div >
             <h1 className='text-center'>Order List</h1>

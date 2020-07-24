@@ -9,16 +9,19 @@ import {connect} from 'react-redux';
   class BurgerBuilder extends Component{
   state = {
     purchasing: false,
-    error: false
+    error: false,
+    isAuthenticated: false
   }
   componentDidMount(){
-    // axios.get("https://burger-bulider-58f60.firebaseio.com/ingridents.json")
-    // .then(response =>{
-    //   this.setState({ingreadents:response.data});
-    // })
-    // .catch(error =>{
-    //   this.setState({error: true})
-    // })
+    let auth = localStorage.getItem('accessToken');
+    if (auth !== null){
+        this.setState({isAuthenticated: true})
+      }
+        else{
+          this.setState({isAuthenticated: false})
+
+        }
+
    }    continueOrder=()=>{
          let params = []
          for(let i in this.props.ings){
@@ -27,7 +30,7 @@ import {connect} from 'react-redux';
          let paramString = params.join('&')
          this.props.history.push({
            pathname:'/checkout',
-           search : '?'+paramString
+           search : '?'+paramString+"&price="+this.props.price
           });
         }
    UpdatePurchasableState = (ingreadents) => {
@@ -57,13 +60,14 @@ import {connect} from 'react-redux';
       disabledInfo[key] = disabledInfo[key] <= 0
     }
     let burger_builder = null
-    if (this.props.ings){
+    if (this.state.isAuthenticated){
        burger_builder =      <div className="text-center">
        <Model data={this.props.ings} 
               show={this.state.purchasing} 
               close={this.purchasingHandlercancel}
               price = {this.props.price}
               continue={this.continueOrder}/>
+              
       <Burger ingreadents={this.props.ings}/>
       <BurgerControls
        add = {this.props.onIngreadentAdded}
@@ -75,7 +79,8 @@ import {connect} from 'react-redux';
        />
       </div>
     }
-  return (burger_builder)
+  return (
+  <div className='text-center'>{this.state.isAuthenticated? burger_builder : <b style={{color: 'red'}}><h1>Please Login and Make ur Own Burger</h1></b>}</div>)
 }
 }
 const mapDispatchToProps = state => {

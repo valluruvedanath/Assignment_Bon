@@ -56,7 +56,8 @@ class ContactData extends Component {
         const order = {
             ingredents: this.props.ingreadents,
             price: this.props.price,
-            orderData: formData
+            orderData: formData,
+            userId: localStorage.getItem('UserId')
         }
         axios.post('https://burger-bulider-58f60.firebaseio.com/orders.json', order)
         .then(resp =>{

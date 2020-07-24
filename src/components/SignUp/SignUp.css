@@ -1,0 +1,15 @@
+.contBlock{
+  background-color: blanchedalmond
+}
+form{
+    border: 2px solid red;
+    display: inline-block;
+    padding: 20px;
+    margin: 20px
+}
+input select{
+    margin: 10px 10px 10px 20px
+}
+label{
+    text-align: left
+}

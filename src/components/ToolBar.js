@@ -7,7 +7,18 @@ import {
     
 class ToolBar extends Component{
      state = {
-        popupshow:false
+        popupshow:false,
+        isAuth: false
+    }
+    componentDidMount(){
+        let auth = this.props.isAuth
+        if (auth !== null){
+            this.setState({isAuth: true})
+        }
+        else{
+            this.setState({isAuth: false})
+        }
+        console.log("auth"+auth)
     }
     closepopup = () =>{
         this.setState({popupshow:false})
@@ -24,8 +35,12 @@ class ToolBar extends Component{
               <ul>
            <li><Link to="/">Home</Link></li>
            <li><Link to="/orders">Orders</Link>  </li>
-           <li style={{float: 'right'}}><a href='/'>Burger Builder</a></li>
-           <li style={{float: 'right'}}><a href='/'>Check Out</a>  </li>
+           <li>
+               {!this.state.isAuth?<Link to="/signup">Login</Link> : <Link to="/logout">LogOut</Link>}
+                </li>
+
+           <li style={{float: 'right'}}><Link to='/burger-build'>Burger Builder</Link></li>
+           {/* <li style={{float: 'right'}}><a href='/'>Check Out</a>  </li> */}
            </ul>
          </nav>
          

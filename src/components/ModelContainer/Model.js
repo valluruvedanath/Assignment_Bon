@@ -1,5 +1,6 @@
 import React from 'react';
 import './Model.css'
+import Button from '../assets/UI/Button'
 const Model =(props)=>{
     const ingradientsSummary = Object.keys(props.data).map( igKey =>{
         return <li key={igKey}>{igKey} : {props.data[igKey]} </li>
@@ -15,7 +16,7 @@ const Model =(props)=>{
             ingradientsSummary
           }
           <p><strong>Total Price : {props.price}</strong></p>
-          <button onClick={()=>props.continue()}>continue</button>
+          <Button btnName='Continue' clicked={props.continue}>Continue</Button>
 		</div>
 	</div>
 </div>

@@ -6,17 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import {createStore} from 'redux'
 import reducer from './store/reducer'
-import {
-    BrowserRouter as Router,
-  } from "react-router-dom";
-    import ToolBar from './components/ToolBar'
 const store = createStore(reducer)
 ReactDOM.render( <Provider store={store}>
-             <Router>
-             <ToolBar />
              <App />
-             </Router>
-
                  </Provider>,
  document.getElementById('root'));
 
