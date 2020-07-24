@@ -6,6 +6,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(./components/assets/burger-banner.jpg);
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: cover
 }
 
 code {

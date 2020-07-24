@@ -26,6 +26,10 @@ class ToolBar extends Component{
     openpopup = () =>{
         this.setState({popupshow:true})
     }
+    componentDidUpdate(prePros, preState){
+        if (preState.popupshow)
+            this.setState({popupshow: false})
+    }
   render(){
    return(
        <div>
@@ -48,14 +52,16 @@ class ToolBar extends Component{
          <span className="HumburgerMenu"onClick={() => this.openpopup()}><i className="glyphicon glyphicon-menu-hamburger"></i></span>
          <div className={this.state.popupshow ? "LeftsideBar" : "Close"}>
          <div className="text-center">
-         <img src={Logo} alt="Burger-Logo"/>
+         <img src={Logo} alt="Burger-Logo" style={{color: 'white'}}/>
          </div>
-         <ul>
-           <li><a href='/'>Home</a></li>
-           <li><a href='/'>Ingradients</a>  </li>
-           <li><a href='/'>Burger Builder</a></li>
-           <li ><a href='/'>Check Out</a>  </li>
-           <li  onClick={()=>this.closepopup()}><i style={{cursor:'pointer'}}>X</i></li>
+         <ul onClick={()=>this.closepopup()}>
+         <li><Link to="/">Home</Link></li>
+           <li><Link to="/orders">Orders</Link>  </li>
+           <li>
+               {!this.state.isAuth?<Link to="/signup">Login</Link> : <Link to="/logout">LogOut</Link>}
+                </li>
+
+           <li><Link to='/burger-build'>Burger Builder</Link></li>
           </ul>                  
          </div>
        </div>

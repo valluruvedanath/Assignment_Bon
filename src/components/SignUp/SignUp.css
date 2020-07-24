@@ -1,5 +1,7 @@
 .contBlock{
-  background-color: blanchedalmond
+  background-color:#ff9800;
+  display: inline-block;
+  margin: 5% 40%
 }
 form{
     border: 2px solid red;
@@ -12,4 +14,33 @@ input select{
 }
 label{
     text-align: left
+}
+button{
+    background-color: brown;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 3px
+}
+button:hover{
+    background-color: lightsalmon;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 3px
+}
+select{
+    background-color: white;
+    width: 97%;
+    padding: 4px;
+}
+table td:first-child {
+    text-align: left
+}
+@media (max-width:500px){
+    .contBlock{
+        background-color:#ff9800;
+        display: inline-block;
+        margin: 5% 10%
+      }  
 }

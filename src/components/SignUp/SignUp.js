@@ -7,7 +7,9 @@ class SignUp extends Component{
         email: '',
         password: '',
         isSignUp: false,
-        isAuth: false
+        isAuth: false,
+        has_error: false,
+        errorMsg: ''
     }
     componentDidMount(){
         if(localStorage.getItem('accessToken') !== null ){
@@ -16,6 +18,10 @@ class SignUp extends Component{
             this.setState({isAuth: false})
 
         }
+    }
+    componentDidUpdate(prevProps, prevState){
+        if (prevState.has_error)
+            this.setState({has_error: false})
     }
     sign_up = (e)=>{
         e.preventDefault()
@@ -34,10 +40,17 @@ class SignUp extends Component{
                 localStorage.setItem('email', rep.data.email);
                 this.props.history.push('/');
             }
+            console.log(rep.message)
+
+            if (rep.status === 400){
+                console.log(rep.data)
+
+            }
             console.log(localStorage.getItem('accessToken'));
         })
-        .catch(error=>{
-            console.log(error)
+        .catch(e=>{
+            console.log(e.response.data.error.message);
+            this.setState({has_error: !this.state.has_error, errorMsg: e.response.data.error.message})
         })
     }
     storeLoginData = (e)=> {
@@ -55,17 +68,43 @@ render(){
     return(
         <div className='text-center contBlock'>
             <br/>
+            <p style={{color: 'red'}}>
+            {this.state.has_error? this.state.errorMsg : null}
+            </p>
             <form onSubmit={this.sign_up}>
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        
             <label>Email : </label>
+            </td>
+            <td>
             <input type='email' name='email' value={this.state.email} onChange={this.storeLoginData} required/> <br/><br/>
+            </td>
+            </tr>
+            <tr>
+                    <td>
             <label>Password : </label>
-            <input type='password' name='password' value={this.state.password} onChange={this.storeLoginData} required/><br/><br/>
-            <label>Form type SignIn/SignUp : </label>
+            </td>
+            <td>
+            <input minLength='6' type='password' name='password' value={this.state.password} onChange={this.storeLoginData} required/><br/><br/>
+            </td>
+            </tr>
+            <tr>
+                <td>
+            <label>Form type : </label>
+            </td>
+            <td>
             <select name='typeFrom' value={this.state.isSignUp ? 'SignUp': 'SignIn'} onChange={this.storeLoginData}>
                 <option value='SignUp'>SignUp</option>
                 <option value='SignIn'>SignIn</option>
 
             </select><br/><br/>
+            </td>
+            </tr>
+            </tbody>
+            </table>
              <button type='submit'>{this.state.isSignUp? 'SignUp' : 'SignIn'}</button>
             </form>
         </div>

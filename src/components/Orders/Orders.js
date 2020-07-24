@@ -15,15 +15,21 @@ class Orders extends Component {
             this.setState({orders: rep.data})
             console.log(rep.data);
         })
+        .catch(e => {
+            console.log(e.response.data.error);
+           
+        })
     }
     render(){
          let orders_data = []
          for(let key in this.state.orders){
             orders_data.push(<Order key={key} id={key} data={this.state.orders[key]} />)
          }
-        return <div >
+         
+        return <div className='OrderContainer'>
+                {}
             <h1 className='text-center'>Order List</h1>
-            {orders_data}
+            {orders_data.length > 0 ? orders_data : <h2 className='text-center'>Your not Ordered any Burger.</h2>}
         </div>
     }
 }

@@ -14,10 +14,11 @@ import ToolBar from './components/ToolBar'
 class App extends Component{
   render(){
   return (
-    <Aux>      
+    <Aux> 
+      <div className='App-banner'>
       <Router>
              <ToolBar isAuth={localStorage.getItem('accessToken')} />
-              <Route exact path="/" render={()=><h1 className='text-center'>Welcome to Burger Hub</h1>} />
+              <Route exact path="/" render={()=><h1 className='text-center' style={{color: 'white'}}>Welcome to Burger Hub</h1>} />
                <Route exact path="/signup" component={SignUp} />
                <Route exact path="/checkout" component={Checkout} />
                <Route exact path="/orders" component={Orders} />
@@ -27,6 +28,7 @@ class App extends Component{
                } />
                <Route exact path="/burger-build" component={BurgerBuilder} />
                </Router>
+               </div>     
     </Aux>)
     }
 
