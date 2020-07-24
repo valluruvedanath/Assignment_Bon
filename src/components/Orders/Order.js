@@ -15,10 +15,11 @@ render(){
        ingredents.push(<span key={key} style={style}>{key+"("+this.props.data.ingredents[key]+")"}</span>)
     }
     return(
-        <div className="OrderContainer">
+        <div className="OrderContainer1">
             <ul className="order-item">
                 <li>{this.props.data.email}</li>
                 <li>{this.props.data.orderData.name}</li>
+                <li>{"Price :" +this.props.price}</li>
                 {ingredents}
             </ul>
         </div>

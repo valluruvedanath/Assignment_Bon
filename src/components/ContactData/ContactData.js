@@ -49,7 +49,9 @@ class ContactData extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        let formData = {}
+        let formData = {};
+        let userId = localStorage.getItem('UserId')
+        let auth = localStorage.getItem('accessToken')
         for(let key in this.state.orderForm){
             formData[key] = this.state.orderForm[key].value
         }
@@ -57,9 +59,9 @@ class ContactData extends Component {
             ingredents: this.props.ingreadents,
             price: this.props.price,
             orderData: formData,
-            userId: localStorage.getItem('UserId')
+            userId: userId
         }
-        axios.post('https://burger-bulider-58f60.firebaseio.com/orders.json', order)
+        axios.post('https://burger-bulider-58f60.firebaseio.com/orders.json?auth='+auth, order)
         .then(resp =>{
            if(resp.status === 200)
            this.props.history.push('/orders');
